@@ -24,3 +24,15 @@ class Search(ABC):
     def _time(self):
         self.time = 0
         return self.time
+
+
+class LinSearch(Search):
+    def _search(self, target):
+        try:
+            items = self.get_items() 
+            for i in range(len(items)): #linearly iterating through each item from the first item
+                if items[i] == target: #when the target item matches an item from the list
+                    return i
+            return -1 #return a negative flag if the target item is not found
+        except Exception as e: #catching errors
+            return str(e) #broadcasting the errors
