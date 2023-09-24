@@ -7,8 +7,9 @@ from abc import ABC, abstractmethod
 class Search(ABC):
     """Abstract base class for searching."""
 
-    def __init__(self, items):
+    def __init__(self, items, target):
         self._items = items
+        self._target = target
 
     @abstractmethod
     def _search(self):
@@ -20,6 +21,9 @@ class Search(ABC):
 
     def get_items(self):
         return self._items
+
+    def get_target(self):
+        return self._target
 
     def _time(self):
         self.time = 0
