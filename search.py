@@ -12,7 +12,7 @@ class Search(ABC):
 
     @abstractmethod
     def _search(self):
-        """Returns the index of the element to be searched
+        """ Returns the index of the element to be searched
         Returns:
                 The index of the element to be searched or -1 if not found
         """
