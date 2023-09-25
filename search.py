@@ -8,14 +8,7 @@ class Search(ABC):
     """Abstract base class for searching."""
 
     def __init__(self, items, target):
-        try:
-            self._items = list(items)
-        except TypeError:
-            raise TypeError(
-                f"""Please provide an iterable. Received value of type <{type(
-                    items
-                ).__name__}>!"""
-            )
+
         self._target = target
 
     @abstractmethod
@@ -53,14 +46,29 @@ class BinarySearch(Search):
             else:
                 return mid
         return -1
+          
+class LinSearch(Search):
+    def _search(self):
+        """
+        Perform linear search to find the index of the target in the list.
 
- class LinSearch(Search):
-    def _search(self, target):
+        Returns:
+            int: The index of the target element, or -1 if not found.
+        """
         try:
-            items = self.get_items() 
-            for i in range(len(items)): #linearly iterating through each item from the first item
-                if items[i] == target: #when the target item matches an item from the list
-                    return i
-            return -1 #return a negative flag if the target item is not found
-        except Exception as e: #catching errors
-            return str(e) #broadcasting the errors
+            items = self.get_items()  # Get the list of items to search within
+            target = self.get_target()  # Get the target value to search for
+            for i in range(len(items)):
+                if items[i] == target:  # Check if the current item matches the target
+                    return i  # Return the index if found
+            return -1  # Return -1 if the target is not found
+
+        except TypeError:
+            # Handle the case where items is not a list or target is not a comparable value
+            raise TypeError("Items should be a list, and target should be a comparable value.")
+
+        except Exception as e:
+            # Handle other exceptions by re-raising them for further investigation
+            raise e
+
+
