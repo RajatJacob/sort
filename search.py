@@ -8,7 +8,14 @@ class Search(ABC):
     """Abstract base class for searching."""
 
     def __init__(self, items, target):
-        self._items = items
+        try:
+            self._items = list(items)
+        except TypeError:
+            raise TypeError(
+                f"""Please provide an iterable. Received value of type <{type(
+                    items
+                ).__name__}>!"""
+            )
         self._target = target
 
     @abstractmethod
@@ -28,3 +35,20 @@ class Search(ABC):
     def _time(self):
         self.time = 0
         return self.time
+
+
+class BinarySearch(Search):
+
+    def _search(self):
+        i = list(sorted(self._items))
+        a = 0
+        b = len(i) - 1
+        while a <= b:
+            mid = (a + b) // 2
+            if i[mid] < self._target:
+                a = mid + 1
+            elif i[mid] > self._target:
+                b = mid - 1
+            else:
+                return mid
+        return -1
