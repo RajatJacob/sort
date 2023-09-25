@@ -1,6 +1,9 @@
 
 from abc import ABC, abstractmethod
 import time
+import numpy as np
+import matplotlib.pyplot as plt
+
 """Module with the base implementation of a Sort class."""
 
 
@@ -39,8 +42,11 @@ class Search(ABC):
 
 class BinarySearch(Search):
 
+    def __init__(self, items, target):
+        super().__init__(list(sorted(items)), target)
+
     def _search(self):
-        i = list(sorted(self._items))
+        i = self._items
         a = 0
         b = len(i) - 1
         while a <= b:
@@ -78,3 +84,37 @@ class LinSearch(Search):
         except Exception as e:
             # Handle other exceptions by re-raising them for further investigation
             raise e
+
+
+if __name__ == '__main__':
+    assert LinSearch([3, 1, 4, 5, 9], 4).search() == 2
+    assert BinarySearch([3, 1, 4, 5, 9], 4).search() == 2
+    assert LinSearch([3, 1, 4, 5, 9], 6).search() == -1
+    assert BinarySearch([3, 1, 4, 5, 9], 6).search() == -1
+    print("All test cases passed.")
+    print("Plotting... (this might take a while)")
+    x = range(1, int(1e5), 10000)
+    bt = []
+    lt = []
+    for i in x:
+        ba = []
+        la = []
+        for j in range(50):
+            a = np.random.randint(0, i*1000, i)
+            target = np.random.choice(a)
+            b = BinarySearch(a, target)
+            b.search()
+            ba.append(b._time())
+            li = LinSearch(a, target)
+            li.search()
+            la.append(li._time())
+        bt.append(sum(ba)/len(ba))
+        lt.append(sum(la)/len(la))
+    plt.plot(x, lt, label='Linear')
+    plt.plot(x, bt, label='Binary')
+    plt.legend()
+    plt.xlabel("Input Size")
+    plt.ylabel("Execution Time (seconds)")
+    plt.title("Searching Algorithm Performance Comparison")
+    plt.grid(True)
+    plt.show()
