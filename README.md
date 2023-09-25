@@ -2,6 +2,9 @@
 
 This repository contains Python code for sorting and searching algorithms. It includes an abstract base class for searching algorithms, two concrete implementations (`LinearSearch` and `BinarySearch`), and a performance comparison plot.
 
+![Search time](search_time.png)
+![Sort time](sort_time.png)
+
 ## Search Algorithms
 
 ### Search Base Class (`Search`)
