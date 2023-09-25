@@ -39,3 +39,36 @@ result_binary = binary_search.search()
 # Print the results
 print(f"Linear Search Result: {result_linear}")
 print(f"Binary Search Result: {result_binary}")
+
+
+```python
+# Example usage of MergeSort and BubbleSort
+merge_sort = MergeSort([3, 1, 4, 5, 2])
+bubble_sort = BubbleSort([3, 1, 4, 5, 2])
+
+# Perform the sorting and get the sorted lists
+sorted_merge = merge_sort._sort()
+sorted_bubble = bubble_sort._sort()
+
+# Print the sorted lists
+print(f"Merge Sort Result: {sorted_merge}")
+print(f"Bubble Sort Result: {sorted_bubble}")
+
+## Contributors
+
+### Sorting Algorithms
+- MergeSort - Saral Agrawal
+- BubbleSort - Sayan Karmakar
+
+### Searching Algorithms
+- LinearSearch - Amal Nair
+- BinarySearch - Rajat Jacob
+
+### Executable File and Plots
+- Rajat Jacob
+- Saral Agrawal
+
+### Sanity Check | Debug
+- Amal Nair
+- Sayan Karmakar
+
