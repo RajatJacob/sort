@@ -93,7 +93,7 @@ if __name__ == '__main__':
     assert BinarySearch([3, 1, 4, 5, 9], 6).search() == -1
     print("All test cases passed.")
     print("Plotting... (this might take a while)")
-    x = range(1, int(1e4), 50)
+    x = range(1, int(1e5), 10000)
     bt = []
     lt = []
     for i in x:
@@ -113,4 +113,8 @@ if __name__ == '__main__':
     plt.plot(x, lt, label='Linear')
     plt.plot(x, bt, label='Binary')
     plt.legend()
+    plt.xlabel("Input Size")
+    plt.ylabel("Execution Time (seconds)")
+    plt.title("Searching Algorithm Performance Comparison")
+    plt.grid(True)
     plt.show()
