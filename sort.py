@@ -31,7 +31,7 @@ class MergeSort(Sort):
 
     def _sort(self):
         try:
-            # Check if the length of the list is greater than 1 (base case for recursion)
+            #length of the list is greater than 1 (base case for recursion)
             if len(self._items) > 1:
                 # Calculate the midpoint of the list
                 mid = len(self._items) // 2
@@ -40,14 +40,14 @@ class MergeSort(Sort):
                 L = self._items[:mid]
                 R = self._items[mid:]
 
-                # Create instances of MergeSort for left and right halves
+                # Creating instances of MergeSort for left and right halves
                 left_sort = MergeSort(L)
-                left_sort._sort()  # Recursively sort the left half
+                left_sort._sort()         # Recursively sort the right half
                 right_sort = MergeSort(R)
                 right_sort._sort()  # Recursively sort the right half
 
                 # Merge the two sorted halves back into the original list
-                self._merge(L, R)
+                self._merge(left_sort._items,right_sort._items)
                 # Return the sorted list
                 return self._items
         except RecursionError as e:
