@@ -32,10 +32,14 @@ class BubbleSort(Sort):
         try:
             n = len(self._items)
             for i in range(n):
+                swap=0
                 for j in range(0, n - i - 1):
                     if self._items[j] > self._items[j + 1]:
                         self._items[j], self._items[j + 1] = self._items[j + 1], self._items[j]
-
+                        swap+=1
+                if swap==0:
+                    break
+            return self._items            
         
         except IndexError as e:
             # handles Index Error
