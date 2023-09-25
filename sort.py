@@ -5,10 +5,11 @@ import matplotlib.pyplot as plt
 
 class Sort(ABC):
     """Abstract base class for sorting."""
-
     def __init__(self, items):
-        self._items = items
-
+            try:
+                self._items = list(items)
+            except TypeError as e:
+                print("There is some error.Enter only an iterable list")  
     @abstractmethod
     def _sort(self):
         """Returns the sorted version of the elements contained
