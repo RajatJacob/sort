@@ -61,6 +61,7 @@ result_binary = binary_search.search()
 print(f"Linear Search Result: {result_linear}")
 print(f"Binary Search Result: {result_binary}")
 
+
 # Example usage of MergeSort and BubbleSort
 merge_sort = MergeSort([3, 1, 4, 5, 2])
 bubble_sort = BubbleSort([3, 1, 4, 5, 2])
@@ -72,7 +73,9 @@ sorted_bubble = bubble_sort._sort()
 # Print the sorted lists
 print(f"Merge Sort Result: {sorted_merge}")
 print(f"Bubble Sort Result: {sorted_bubble}")
+
 ```
+
 
 ## Contributors
 
