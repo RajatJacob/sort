@@ -1,6 +1,6 @@
 
 from abc import ABC, abstractmethod
-
+import time
 """Module with the base implementation of a Sort class."""
 
 
