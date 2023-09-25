@@ -39,8 +39,11 @@ class Search(ABC):
 
 class BinarySearch(Search):
 
+    def __init__(self, items, target):
+        super().__init__(list(sorted(items)), target)
+
     def _search(self):
-        i = list(sorted(self._items))
+        i = self._items
         a = 0
         b = len(i) - 1
         while a <= b:
