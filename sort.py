@@ -1,7 +1,13 @@
 from abc import ABC, abstractmethod
+
 import time
 import random
 import matplotlib.pyplot as plt
+              #import Datetime
+
+
+"""Module with the base implementation of a Sort class."""
+
 
 class Sort(ABC):
     """Abstract base class for sorting."""
@@ -25,6 +31,7 @@ class Sort(ABC):
     def _time(self):
         self.time = 0
         return self.time
+
 
 class MergeSort(Sort):
     """Class that represents a MergeSort implementation."""
@@ -95,10 +102,39 @@ class MergeSort(Sort):
             print("Input lists contain incompatible elements.")
         except Exception as e:
             # Handle other unexpected exceptions
+
+"""Module with the base implementation of a Sort class."""
+
+class BubbleSort(Sort):
+    """Class that represents a BubbleSort implementation."""
+
+    def _sort(self):
+        try:
+            n = len(self._items)
+            for i in range(n):
+                swap=0
+                for j in range(0, n - i - 1):
+                    if self._items[j] > self._items[j + 1]:
+                        self._items[j], self._items[j + 1] = self._items[j + 1], self._items[j]
+                        swap+=1
+                if swap==0:
+                    break
+            return self._items            
+        
+        except IndexError as e:
+            # handles Index Error
+            print("IndexError: Check List Indices")
+        except TypeError as e:
+            # handles Type Error
+            print("Input list is of incompatible type.")
+        except Exception as e:
+            # handles other unexpected Exceptions
+
             print(f"An unexpected error occurred: {str(e)}")
 
     def _time(self):
         try:
+
             # Measure the execution time of the sorting process
             start = time.time()  # Record the start time
             self._sort()         # Call the sorting algorithm
@@ -111,3 +147,6 @@ class MergeSort(Sort):
         except Exception as e:
             # Handle other unexpected exceptions
             print(f"An unexpected error occurred: {str(e)}")
+
+
+
