@@ -66,8 +66,8 @@ class LinSearch(Search):
             target = self.get_target()  # Get the target value to search for
             for i in range(len(items)):
                 if items[i] == target:  # Check if the current item matches the target
+                    self.time = time.time() - start_time
                     return i  # Return the index if found
-                self.time = time.time() - start_time
             self.time = time.time() - start_time
             return -1  # Return -1 if the target is not found
 
