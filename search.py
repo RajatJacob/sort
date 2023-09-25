@@ -8,7 +8,7 @@ class Search(ABC):
     """Abstract base class for searching."""
 
     def __init__(self, items, target):
-
+        self._items = list(items)
         self._target = target
 
     @abstractmethod
@@ -30,7 +30,6 @@ class Search(ABC):
         return self.time
 
 
-
 class BinarySearch(Search):
 
     def _search(self):
@@ -46,7 +45,8 @@ class BinarySearch(Search):
             else:
                 return mid
         return -1
-          
+
+
 class LinSearch(Search):
     def _search(self):
         """
@@ -65,10 +65,9 @@ class LinSearch(Search):
 
         except TypeError:
             # Handle the case where items is not a list or target is not a comparable value
-            raise TypeError("Items should be a list, and target should be a comparable value.")
+            raise TypeError(
+                "Items should be a list, and target should be a comparable value.")
 
         except Exception as e:
             # Handle other exceptions by re-raising them for further investigation
             raise e
-
-
