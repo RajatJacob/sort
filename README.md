@@ -25,6 +25,27 @@ This repository contains Python code for sorting and searching algorithms. It in
 - It performs a binary search through a sorted list of items to find the target element.
 - The `_search` method uses a binary search algorithm to efficiently locate the target element in the sorted list.
 
+## Sorting Algorithms
+
+### Sorting Base Class (`Sort`)
+
+- The `Sort` class is an abstract base class (ABC) for sorting algorithms.
+- It provides a common interface for different sorting algorithms.
+- The `__init__` method initializes the sorting with a list of items to sort.
+- The `_sort` method is an abstract method that should be implemented by subclasses to define the specific sorting algorithm.
+- The `_time` method records the execution time of the sorting operation.
+
+### Merge Sort (`MergeSort`)
+
+- The `MergeSort` class is a concrete implementation of the `Sort` class for merge sort.
+- It implements the merge sort algorithm to efficiently sort a list of items.
+
+### Bubble Sort (`BubbleSort`)
+
+- The `BubbleSort` class is a concrete implementation of the `Sort` class for bubble sort.
+- It implements the bubble sort algorithm to sort a list of items.
+
+
 ## Example Usage
 
 ```python
@@ -40,8 +61,6 @@ result_binary = binary_search.search()
 print(f"Linear Search Result: {result_linear}")
 print(f"Binary Search Result: {result_binary}")
 
-
-```python
 # Example usage of MergeSort and BubbleSort
 merge_sort = MergeSort([3, 1, 4, 5, 2])
 bubble_sort = BubbleSort([3, 1, 4, 5, 2])
@@ -53,6 +72,7 @@ sorted_bubble = bubble_sort._sort()
 # Print the sorted lists
 print(f"Merge Sort Result: {sorted_merge}")
 print(f"Bubble Sort Result: {sorted_bubble}")
+```
 
 ## Contributors
 
