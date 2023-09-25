@@ -147,4 +147,41 @@ class BubbleSort(Sort):
             print(f"An unexpected error occurred: {str(e)}")
 
 
+# Main code for performance comparison
 
+if __name__ == "__main__":
+        merge_sort_times = []
+        bubble_sort_times = []
+        input_sizes = [100, 200, 500, 1000, 5000, 10000]
+
+        for size in input_sizes:
+          # Generate a random list of numbers between 1 and the input size
+          random_list = [random.randint(1, size) for _ in range(size)]
+
+          # Create instances of MergeSort and BubbleSort
+          merge_sort_instance = MergeSort(random_list.copy())
+          bubble_sort_instance = BubbleSort(random_list.copy())
+
+          # Measure the execution times and store them
+          merge_sort_time = merge_sort_instance._time()
+          bubble_sort_time = bubble_sort_instance._time()
+
+          merge_sort_times.append(merge_sort_time)
+          bubble_sort_times.append(bubble_sort_time)
+
+          print(f"Input size: {size}")
+          print(f"Merge Sort Execution Time: {merge_sort_time} seconds")
+          print(f"Bubble Sort Execution Time: {bubble_sort_time} seconds")
+          print("-" * 40)
+
+      # Plot the execution times for both algorithms
+      plt.plot(input_sizes, merge_sort_times, label="Merge Sort")
+      plt.plot(input_sizes, bubble_sort_times, label="Bubble Sort")
+      plt.xlabel("Input Size")
+      plt.ylabel("Execution Time (seconds)")
+      plt.title("Sorting Algorithm Performance Comparison")
+      plt.legend()
+      plt.grid(True)
+
+      # Show the plot
+      plt.show()
