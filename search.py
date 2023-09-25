@@ -11,6 +11,7 @@ class Search(ABC):
 
         self._items = list(items)
         self._target = target
+        self.time = None
 
     @abstractmethod
     def _search(self):
@@ -27,15 +28,18 @@ class Search(ABC):
         return self._target
 
     def _time(self):
-        self.time = 0
         return self.time
 
+    def search(self):
+        start_time = time.time()
+        out = self._search()
+        self.time = time.time() - start_time
+        return out
 
 
 class BinarySearch(Search):
 
     def _search(self):
-        start_time = time.time()
         i = list(sorted(self._items))
         a = 0
         b = len(i) - 1
@@ -46,9 +50,7 @@ class BinarySearch(Search):
             elif i[mid] > self._target:
                 b = mid - 1
             else:
-                self.time = time.time() - start_time
                 return mid
-        self.time = time.time() - start_time
         return -1
 
 
@@ -60,15 +62,12 @@ class LinSearch(Search):
         Returns:
             int: The index of the target element, or -1 if not found.
         """
-        start_time = time.time() 
         try:
             items = self.get_items()  # Get the list of items to search within
             target = self.get_target()  # Get the target value to search for
             for i in range(len(items)):
                 if items[i] == target:  # Check if the current item matches the target
-                    self.time = time.time() - start_time
                     return i  # Return the index if found
-            self.time = time.time() - start_time
             return -1  # Return -1 if the target is not found
 
         except TypeError:
@@ -79,5 +78,3 @@ class LinSearch(Search):
         except Exception as e:
             # Handle other exceptions by re-raising them for further investigation
             raise e
-
-
