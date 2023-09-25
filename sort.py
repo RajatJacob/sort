@@ -3,8 +3,6 @@ from abc import ABC, abstractmethod
 import time
 import random
 import matplotlib.pyplot as plt
-              #import Datetime
-
 
 """Module with the base implementation of a Sort class."""
 
